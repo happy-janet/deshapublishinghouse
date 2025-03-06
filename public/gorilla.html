@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lake Mburo Safari Details</title>
+    <style>
+        
+        body {
+            font-family: 'Nunito', sans-serif;
+            text-transform: capitalize;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+       
+
+        header {
+    position: relative;
+    background-color: #ffa500;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.back-button {
+    display: inline-block;
+    margin-bottom: 10px; /* Adds space below the back button */
+    padding: 10px 15px;
+    background-color: #ffa500;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    position: absolute; /* Position it within the header */
+    top: 20px; /* Adjust vertical position */
+    left: 20px; /* Adjust horizontal position */
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.back-button:hover {
+    background-color: #ffa500;
+    transform: scale(1.05);
+}
+
+
+        .carousel {
+            position: relative;
+            max-width: 100%;
+        }
+
+        .carousel img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 0 0 8px 8px;
+        }
+
+        .carousel button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .carousel button.prev {
+            left: 10px;
+        }
+
+        .carousel button.next {
+            right: 10px;
+        }
+
+        .container {
+    display: flex; /* Add this to make child elements align in a row */
+    gap: 20px; /* Add spacing between the two sections */
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 30px;
+    flex-wrap: wrap; /* This allows wrapping on smaller screens */
+}
+
+.about-container,
+.form-container {
+    flex: 1; /* Allows them to take equal width or adjust according to content */
+    min-width: 350px; /* Sets a minimum width for the containers */
+    margin: 0; /* Remove the bottom margin to align properly */
+}
+
+        .about-container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-container h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .about-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .about-card {
+            flex: 1 1 calc(50% - 20px);
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-card h3 {
+            margin-top: 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .about-card p {
+            margin: 10px 0 0;
+            font-size: 16px;
+            color: #080808;
+        }
+
+        .form-container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px #ffa500(0, 0, 0, 0.1);
+        }
+
+        .booking-form h2 {
+            margin-top: 0;
+            color: #333;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .booking-form .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .booking-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .booking-form input,
+        .booking-form select,
+        .booking-form textarea {
+            width: 90%;
+            padding: 12px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .booking-form textarea {
+            grid-column: span 2;
+        }
+
+        .booking-form button {
+            background-color: #ffa500;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.3s;
+            display: block;
+            width: 100%;
+        }
+
+        .booking-form button:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+
+        .booking-form button:focus {
+            outline: none;
+        }
+
+        footer {
+            background-color: #ffa500;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="carousel">
+            <img src="baboon3.jpg" alt="Lake Mburo Safari Image 1" class="active">
+            <img src="gorilla1.png" alt="Lake Mburo Safari Image 2" style="display: none;">
+            <img src="gorilla2.png" alt="Lake Mburo Safari Image 3" style="display: none;">
+            <img src="gorrila.png" alt="Lake Mburo Safari Image 3" style="display: none;">
+            <img src="gorilla5.png" alt="Lake Mburo Safari Image 3" style="display: none;">
+            <img src="gorilla6.png" alt="Lake Mburo Safari Image 3" style="display: none;">
+            <img src="gorilla.png" alt="Lake Mburo Safari Image 3" style="display: none;">
+            <img src="gorilla8.png" alt="Lake Mburo Safari Image 3" style="display: none;">
+
+            <!-- <button class="prev" onclick="prevSlide()">&#10094;</button>
+            <button class="next" onclick="nextSlide()">&#10095;</button> -->
+        </div>
+        <a href="/" class="back-button">Back to Home</a>
+
+        <h1>Uganda Gorilla and Wildlife Safari Experience</h1>
+    </header>
+
+    <div class="container">
+        <section class="about-container">
+            <!-- Introduction -->
+            <h1>Gorilla Safaris in Uganda</h1>
+            <p>In this 7-day Uganda tour, you will need a long checklist to tick off all the wildlife and game you will encounter. From the savannahs of Queen Elizabeth Park and the mountain gorillas in the impenetrable rainforest of Bwindi Impenetrable National Park, to the elusive and playful chimpanzees of Kibale Forest, this tour includes treks, game drives, and cultural excursions like meeting the historical Batwa Pygmies in Bwindi Forest. It is a wildlife nirvana, and a reason Uganda is called the Pearl of Africa.</p>
+        
+            <!-- Highlights -->
+            <h2>Highlights</h2>
+            <ul>
+                <li>Day 1 – Welcome, Tour Briefing, and Transfer to Kibale Forest National Park</li>
+                <li>Day 2 – Chimpanzee Trekking and Transfer to Queen Elizabeth National Park</li>
+                <li>Day 3 – Game Drive and Boat Cruise along the Kazinga Channel</li>
+                <li>Day 4 – Transfer to the Southern Ishasha Sector with a Game Drive through Kasenyi Sector</li>
+                <li>Day 5 – Game Drive and Tree-Climbing Lions Experience; Afternoon Transfer to Bwindi Impenetrable Forest</li>
+                <li>Day 6 – Gorilla Trekking in Bwindi National Park; Batwa Pygmies Tour</li>
+                <li>Day 7 – Return to Kampala/Entebbe and Departure</li>
+            </ul>
+        
+            <!-- Day 1 -->
+            <h2>Day 1 – Welcome, Tour Briefing, and Transfer to Kibale Forest National Park</h2>
+            <p>Welcome to Uganda, the Pearl of Africa. Your driver/guide will pick you up from your morning flight or hotel at 8 am. The guide will introduce himself and provide a thorough briefing of your tour.</p>
+            <p>Travel from Entebbe to Kibale National Forest, a 6-7 hour drive through farmlands, savannahs, and forests. Lunch will be at Mubende Township. After lunch, continue for a final 3-hour drive to your accommodation. Enjoy the sunset over Kibale Rainforest. Dinner and overnight at your accommodation.</p>
+            
+            <h3>Accommodation</h3>
+            <ul>
+                <li><strong>Luxury:</strong> Kyaninga Lodge</li>
+                <li><strong>Midrange:</strong> Chimpanzee Forest Guest House</li>
+                <li><strong>Budget:</strong> Kibale Forest Camp (Budget Tents)</li>
+            </ul>
+        
+            <!-- Day 2 -->
+            <h2>Day 2 – Chimpanzee Trekking and Transfer to Queen Elizabeth National Park</h2>
+            <p>After an early breakfast, report to the park headquarters at Kanyanchu for a briefing and proceed with chimpanzee tracking. This can take up to 4 hours. Along the way, you might see other primates such as grey-cheeked Mangabeys, colobus monkeys, baboons, and various mammals like forest elephants and giant forest hogs.</p>
+            <p>Enjoy a picnic lunch after tracking, then transfer to Queen Elizabeth National Park. Overnight at a lodge with views of the park's savannah landscape.</p>
+        
+            <h3>Accommodation</h3>
+            <ul>
+                <li><strong>Luxury:</strong> Mweya Safari Lodge</li>
+                <li><strong>Midrange:</strong> Buffalo Safari Lodge</li>
+                <li><strong>Budget:</strong> Pumba Safari Cottages</li>
+            </ul>
+        
+            <!-- Day 3 -->
+            <h2>Day 3 – Game Drive and Boat Cruise along the Kazinga Channel</h2>
+            <p>Wake up early for a game drive starting at 6:30 am. Explore the Kasenyi Plains, known for lions and Uganda Kobs. The park is home to 95 mammal species including elephants, waterbucks, and leopards.</p>
+            <p>Return for lunch, then enjoy a boat cruise along the Kazinga Channel, a 40 km long stream linking Lake George and Lake Edward. The channel is teeming with hippos, buffaloes, water birds, crocodiles, and other wildlife.</p>
+            <p>Return to your lodge after the cruise.</p>
+        
+            <h3>Accommodation</h3>
+            <ul>
+                <li><strong>Luxury:</strong> Mweya Safari Lodge</li>
+                <li><strong>Midrange:</strong> Buffalo Safari Lodge</li>
+                <li><strong>Budget:</strong> Pumba Safari Cottages</li>
+            </ul>
+        
+            <!-- Day 4 -->
+            <h2>Day 4 – Transfer to the Southern Ishasha Sector with a Game Drive through Kasenyi Sector</h2>
+            <p>After breakfast, head south to the Ishasha Sector. Enjoy a game drive en route, with a picnic lunch along the way. Look out for hyenas, buffaloes, Uganda Kobs, leopards, and elephants.</p>
+            <p>Arrive in Ishasha, check in to your accommodation, and enjoy dinner and an overnight stay.</p>
+        
+            <h3>Accommodation</h3>
+            <ul>
+                <li><strong>Luxury:</strong> Ishasha Wilderness Camp</li>
+                <li><strong>Midrange:</strong> Ishasha Jungle Lodge</li>
+                <li><strong>Budget:</strong> Enjojo Lodge</li>
+            </ul>
+        
+            <!-- Day 5 -->
+            <h2>Day 5 – Game Drive and Tree-Climbing Lions Experience; Afternoon Transfer to Bwindi Impenetrable Forest</h2>
+            <p>After breakfast, enjoy a game drive in the Ishasha Sector, known for tree-climbing lions. Although spotting these lions can be challenging, we guarantee the experience with park tracking and expert guidance. Ishasha also has a notable population of Topis and various wildlife along the Ishasha River.</p>
+            <p>Have lunch at the lodge before transferring to Bwindi Impenetrable Forest, around 150 km away. Dinner and overnight stay at your chosen lodge in Buhoma or Ruhija regions.</p>
+        
+            <h3>Accommodation</h3>
+            <ul>
+                <li><strong>Luxury:</strong> Ruhija Gorilla Safari Lodge / Buhoma Lodge</li>
+                <li><strong>Midrange:</strong> Bakiga Lodge / Bwindi Haven</li>
+                <li><strong>Budget:</strong> Broadbill Forest Camp / Crested Crane Hotel</li>
+            </ul>
+        
+            <!-- Day 6 -->
+            <h2>Day 6 – Gorilla Trekking in Bwindi National Park; Batwa Pygmies Tour</h2>
+            <p>After breakfast and a briefing from UWA officials, set off for gorilla trekking. This once-in-a-lifetime experience involves searching for the endangered mountain gorillas in the dense forest. The trek can take between 2-7 hours.</p>
+            <p>Post-trek, relax and have lunch at your lodge. In the afternoon, meet the Batwa Pygmies, the original inhabitants of the forest. This cultural tour showcases their traditional skills, craftsmanship, and performances.</p>
+            <p>Return to your lodge for dinner and an overnight stay.</p>
+        
+            <h3>Accommodation</h3>
+            <ul>
+                <li><strong>Luxury:</strong> Ruhija Gorilla Safari Lodge / Buhoma Lodge</li>
+                <li><strong>Midrange:</strong> Bakiga Lodge / Bwindi Haven</li>
+                <li><strong>Budget:</strong> Broadbill Forest Camp / Crested Crane Hotel</li>
+            </ul>
+        
+            <!-- Day 7 -->
+            <h2>Day 7 – Return to Kampala/Entebbe; Departure</h2>
+            <p>After breakfast, drive from Bwindi to Kampala, passing Kabale and Mbarara towns. Lunch will be at Igongo Country Hotel, 12 km past Mbarara. Another stop will be made at the Equator Monument before reaching Kampala in the evening.</p>
+        
+            <!-- Inclusive Costs -->
+            <h2>Inclusive Costs</h2>
+            <ul>
+                <li>Fully escorted game drives and forest treks</li>
+                <li>Pick-up from Kampala and return</li>
+                <li>Chimpanzee and gorilla trekking permits</li>
+                <li>Meals on a full board basis – Daily breakfast, lunch, and dinner</li>
+                <li>6 nights’ accommodation</li>
+                <li>All sightseeing and entry fees as per itinerary</li>
+                <li>Boat cruise</li>
+                <li>Bottled water</li>
+                <li>Nature/community walks</li>
+                <li>All ground transportation in a comfortable 4X4 vehicle</li>
+                <li>All activities/experiences as mentioned in the package</li>
+            </ul>
+        
+            <!-- Excluded Costs -->
+            <h2>Excluded Costs</h2>
+            <ul>
+                <li>International flights and visas</li>
+                <li>Personal items (souvenirs, travel insurance, etc.)</li>
+                <li>Tips/gratuities (tipping guideline: US$10.00 per person per day)</li>
+                <li>Additional accommodation before and at the end of the tour (unless requested)</li>
+                <li>Government-imposed increase of taxes and/or change of tariff</li>
+                <li>Hotel/airport transfers (can be arranged at an extra cost)</li>
+                <li>Drinks and all non-listed meals</li>
+            </ul>
+        </section>
+        
+
+        <section class="form-container">
+            <div class="booking-form">
+                <h2>Book Your Safari</h2>
+                <form id="safariBookingForm" action="/book-safari" method="post">
+                    <div class="inputBox">
+                        <h3>Full Name</h3>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="inputBox">
+                        <h3>Email Address</h3>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="inputBox">
+                        <h3>Nationality</h3>
+                        <select id="nationality" name="nationality" required>
+                            <option value="resident">Resident</option>
+                            <option value="non-resident">Non-Resident</option>
+                        </select>
+                    </div>
+                    <div class="inputBox">
+                        <h3>Phone Number</h3>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="inputBox">
+                        <h3>Accommodation Type</h3>
+                        <select id="accommodation-type" name="accommodationType" required>
+                            <option value="luxury">Luxury</option>
+                            <option value="midrange">Midrange</option>
+                            <option value="budget">Budget</option>
+                        </select>
+                    </div>
+                    <div class="inputBox">
+                        <h3>Safari Package</h3>
+                        <input type="text" id="safari-package" name="safariPackage" required>
+                    </div>
+                    <div class="inputBox">
+                        <h3>Number of Adults</h3>
+                        <input type="number" id="adults" name="adults" min="1" required>
+                    </div>
+                    <div class="inputBox">
+                        <h3>Number of Children</h3>
+                        <input type="number" id="children" name="children" min="0">
+                    </div>
+                    <div class="inputBox">
+                        <h3>Safari Type</h3>
+                        <select id="safari-type" name="safariType" required>
+                            <option value="game-drive">Guided Game Drive</option>
+                            <option value="boat-safari">Boat Safari</option>
+                            <option value="nature-walk">Nature Walk</option>
+                            <option value="horseback-safari">Horseback Safari</option>
+                        </select>
+                    </div>
+                    <div class="inputBox">
+                        <h3>Start Date</h3>
+                        <input type="date" id="start-date" name="startDate" required>
+                    </div>
+                    <div class="inputBox">
+                        <h3>End Date</h3>
+                        <input type="date" id="end-date" name="endDate" required>
+                    </div>
+                    <div class="inputBox">
+                        <h3>Special Requests</h3>
+                        <textarea id="special-requests" name="specialRequests" rows="4"></textarea>
+                    </div>
+                    <input type="submit" class="btn" value="Submit Booking">
+                </form>
+                
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024@ Raha Voyage Safaris. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.carousel img');
+            if (index >= slides.length) currentSlide = 0;
+            if (index < 0) currentSlide = slides.length - 1;
+            slides.forEach((slide, i) => {
+                slide.style.display = i === currentSlide ? 'block' : 'none';
+            });
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide += 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide -= 1);
+        }
+
+        showSlide(currentSlide);
+        setInterval(nextSlide, 5000); // Automatic slide transition every 5 seconds
+    </script>
+
+</body>
+
+</html>
