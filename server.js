@@ -3,14 +3,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const nodemailer = require("nodemailer");
-const axios = require("axios");
-const OAuth = require("oauth-1.0a");
-const crypto = require("crypto");
 const cors = require("cors");
 const helmet = require("helmet");
-const path = require("path"); // Add this line if it's missing
+const path = require("path");
 
-const Booking = require("./Models/Booking");
+const Booking = require("./Models/PublishingBooking");
 const app = express();
 
 // Middleware
@@ -22,6 +19,7 @@ app.use(
     origin: "https://your-frontend-domain.com", // Replace with your frontend domain
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true, // Allow credentials if necessary
   })
 );
 app.use(helmet()); // Set security headers
@@ -35,7 +33,6 @@ mongoose
     console.error("Failed to connect to MongoDB:", err.message);
     process.exit(1);
   });
-
 
 // Update the sendEmail function
 const sendEmail = async (recipient, subject, text, from) => {
@@ -62,53 +59,72 @@ const sendEmail = async (recipient, subject, text, from) => {
   }
 };
 
-app.get("/blog1", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "./blog1.html"));
-});
-
-app.get("/blog2", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "./blog2.html"));
-});
-
-
-
-// Handle General Booking Form Submission
-app.post("/book", async (req, res) => {
+// Handle Publishing Booking Form Submission
+app.post("/book-publishing", async (req, res) => {
   try {
-    // Capture all fields from the generic booking form
-    const { placeName, numberOfGuests, arrivalDate, leavingDate, email } =
-      req.body;
+    const {
+      name,
+      surname,
+      email,
+      phone,
+      country,
+      bookTitle,
+      wordCount,
+      language,
+      category,
+      howFindUs,
+      additionalInfo,
+    } = req.body;
 
-    // Process the booking data
-    console.log("General Booking Data:", {
-      placeName,
-      numberOfGuests,
-      arrivalDate,
-      leavingDate,
-    });
+    console.log("Publishing Booking Data Received");
 
     // Send confirmation email to the client
-    const clientSubject = "Booking Confirmation";
-    const clientText = `Thank you for your booking!\n\nDetails:\n- Place: ${placeName}\n- Number of Guests: ${numberOfGuests}\n- Arrival Date: ${arrivalDate}\n- Leaving Date: ${leavingDate}`;
-    await sendEmail(email, clientSubject, clientText); // Send email to client
+    const clientSubject = "Publishing Booking Confirmation";
+    const clientText = `Thank you for reaching out to us!\n\nHere are your submission details:\n- Name: ${name} ${surname}\n- Email: ${email}\n- Phone: ${phone}\n- Country: ${country}\n- Book Title: ${bookTitle}\n- Word Count: ${wordCount}\n- Language: ${language}\n- Category: ${category}\n- How Did You Find Us: ${howFindUs}\n- Additional Info: ${additionalInfo}`;
 
-    // Prepare the email to the company
-    const companySubject = "New General Booking Received";
-    const companyText = `New booking received!\n\nDetails:\n- Place: ${placeName}\n- Number of Guests: ${numberOfGuests}\n- Arrival Date: ${arrivalDate}\n- Leaving Date: ${leavingDate}`;
+    try {
+      await sendEmail(email, clientSubject, clientText);
+    } catch (emailError) {
+      console.error("Error sending confirmation email:", emailError.message);
+    }
 
-    // Send email to the company
-    await sendEmail("deshapublishinghousehelp@outlook.com", companySubject, companyText);
+    // Prepare the email for the company
+    const companySubject = "New Publishing Booking Received";
+    const companyText = `New publishing request received!\n\nDetails:\n- Name: ${name} ${surname}\n- Email: ${email}\n- Phone: ${phone}\n- Country: ${country}\n- Book Title: ${bookTitle}\n- Word Count: ${wordCount}\n- Language: ${language}\n- Category: ${category}\n- How Did You Find Us: ${howFindUs}\n- Additional Info: ${additionalInfo}`;
 
-    // Respond to the client
-    res.send("Your submission has been received , we shall get back to you very soon!");
+    try {
+      await sendEmail("deshapublishinghousehelp@outlook.com", companySubject, companyText);
+    } catch (companyEmailError) {
+      console.error("Error sending company notification email:", companyEmailError.message);
+    }
+
+    res.send("Your publishing submission has been received. We will get back to you soon!");
   } catch (error) {
-    console.error("Error processing booking:", error.message);
-    res
-      .status(500)
-      .send(
-        "There was an error processing your request. Please try again later."
-      );
+    console.error("Error processing publishing booking:", error.message);
+    res.status(500).send("There was an error processing your request. Please try again later.");
   }
+});
+
+// Handle Contact Form Submission
+app.post("/contact", (req, res) => {
+  try {
+    const { name, email, message } = req.body;
+    console.log("Contact form submitted:", { name, email, message });
+
+    res.send("Thank you for contacting us! We shall get back to you shortly.");
+  } catch (error) {
+    console.error("Error processing contact form:", error.message);
+    res.status(500).send("There was an error processing your request.");
+  }
+});
+
+// Serve Static Pages
+app.get("/desha-blog", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "desha_blog.html"));
+});
+
+app.get("/echoes-of-africa", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "echoes-of-africa.html"));
 });
 
 // Start the server
@@ -116,7 +132,6 @@ const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
 
 
 

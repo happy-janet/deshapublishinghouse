@@ -17,7 +17,7 @@
         <!-- External Scripts -->
         <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     </head>
-    <script src="//code.tidio.co/dfinksgqqcux8vsp5zbnplolukwwvl9k.js" async></script>       
+    <!-- <script src="//code.tidio.co/dfinksgqqcux8vsp5zbnplolukwwvl9k.js" async></script>        -->
 <body>
     <!-- header section start -->
     <header>
@@ -35,7 +35,7 @@
             <a href="#contact">Contact</a>
         </nav>      
     
-</header>
+    </header>
 
     <!-- home section starts -->
     <div class="hero-section">
@@ -58,58 +58,59 @@
         </div>
     </div>
        <!-- home section end -->
-    <section id="about-us">
+       <section id="about-us">
         <div class="container">
-          <h2>About Desha Publishing House</h2>
-          <p>At <strong>Desha Publishing House</strong>, we believe in the transformative power of words. Founded on the principles of integrity, creativity, inclusivity, we strive to discover and nurture emerging and established authors, publishing works that inspire, educate, and entertain. </p>
-          
-          <p>From captivating novels to insightful non-fiction, our diverse catalog reflects our dedication to enriching the literary landscape. We are more than just a publishing house; we are a community of storytellers, editors, and readers united by a shared love of books.</p>
-          
-          <h3>Our Commitment</h3>
-          <p>Desha Publishing House is committed to publishing exceptional books that resonate with readers. We are dedicated to nurturing and supporting our authors, providing them with the resources and expertise they need to bring their stories to life. We uphold the highest standards of quality in every aspect of our work, from editorial excellence to innovative marketing, ensuring that every book we publish makes a meaningful contribution to the literary world.</p>
-          
-          <h3>Our Values</h3>
-          <ul>
-            <li><strong>Author Partnership: </strong> Building strong, collaborative relationships with authors.</li>
-            <li><strong>Respect and Fairness: </strong> Treating authors with integrity and providing equitable terms.</li>
-            <li><strong>Support and Guidance:</strong> Offering comprehensive support throughout the publishing process.</li>
-            <li><strong>Nurturing Creativity:</strong>Fostering a creative environment where authors can thrive.</li>
-            <li><strong>Amplifying Voices:</strong> Giving platform to diverse and underrepresented authors.</li>
-          </ul>
+            <h2>About Desha Publishing House</h2>
+            <p>At <strong>Desha Publishing House</strong>, we believe in the transformative power of words. Founded on the principles of integrity, creativity, inclusivity, we strive to discover and nurture emerging and established authors, publishing works that inspire, educate, and entertain.</p>
+    
+            <p>From captivating novels to insightful non-fiction, our diverse catalog reflects our dedication to enriching the literary landscape. We are more than just a publishing house; we are a community of storytellers, editors, and readers united by a shared love of books.</p>
+    
+            <h3 class="commitment-header">Our Commitment</h3>
+            <p class="commitment-content">Desha Publishing House is committed to publishing exceptional books that resonate with readers. We are dedicated to nurturing and supporting our authors, providing them with the resources and expertise they need to bring their stories to life. We uphold the highest standards of quality in every aspect of our work, from editorial excellence to innovative marketing, ensuring that every book we publish makes a meaningful contribution to the literary world.</p>
+    
+            <h3 class="values-header">Our Values</h3>
+            <ul class="values-list">
+                <li><strong>Author Partnership: </strong> Building strong, collaborative relationships with authors.</li>
+                <li><strong>Respect and Fairness: </strong> Treating authors with integrity and providing equitable terms.</li>
+                <li><strong>Support and Guidance:</strong> Offering comprehensive support throughout the publishing process.</li>
+                <li><strong>Nurturing Creativity:</strong> Fostering a creative environment where authors can thrive.</li>
+                <li><strong>Amplifying Voices:</strong> Giving platform to diverse and underrepresented authors.</li>
+            </ul>
         </div>
     </section>
+    
 
    <!-- book section start -->
     <section class="book" id="book">
         <section class="book" id="book">
             <div class="custom-form-container">
                 <h2>Submit Your Book Information</h2>
-                <form>
+                <form id="publishingBookingForm" action="/book-publishing" method="POST">
                     <div class="form-grid">
                         <!-- Name -->
                         <div class="custom-form-group">
                             <label for="name">Name *</label>
                             <input type="text" id="name" name="name" required>
                         </div>
-        
+                
                         <!-- Surname -->
                         <div class="custom-form-group">
                             <label for="surname">Surname *</label>
                             <input type="text" id="surname" name="surname" required>
                         </div>
-        
+                
                         <!-- Email -->
                         <div class="custom-form-group">
                             <label for="email">Email *</label>
                             <input type="email" id="email" name="email" required>
                         </div>
-        
+                
                         <!-- Phone -->
                         <div class="custom-form-group">
                             <label for="phone">Phone Number *</label>
                             <input type="tel" id="phone" name="phone" required>
                         </div>
-        
+                
                         <!-- Country -->
                         <div class="custom-form-group">
                             <label for="country">Country *</label>
@@ -117,17 +118,17 @@
                                 <option value="">Select Country</option>
                             </select>
                         </div>
-        
+                
                         <!-- Book Title -->
                         <div class="custom-form-group">
                             <label for="book-title">Title of Book</label>
-                            <input type="text" id="book-title" name="book-title">
+                            <input type="text" id="book-title" name="bookTitle">
                         </div>
-        
+                
                         <!-- Word Count -->
                         <div class="custom-form-group">
                             <label for="word-count">Word Count *</label>
-                            <select id="word-count" name="word-count" required>
+                            <select id="word-count" name="wordCount" required>
                                 <option value="">Select Word Count</option>
                                 <option value="0-24999">0 - 24,999</option>
                                 <option value="25000-49999">25,000 - 49,999</option>
@@ -135,7 +136,7 @@
                                 <option value="100000+">100,000+</option>
                             </select>
                         </div>
-        
+                
                         <!-- Language -->
                         <div class="custom-form-group">
                             <label for="language">Language *</label>
@@ -143,7 +144,7 @@
                                 <option value="">Choose Language</option>
                             </select>
                         </div>
-        
+                
                         <!-- Category -->
                         <div class="custom-form-group">
                             <label for="category">Category *</label>
@@ -151,28 +152,29 @@
                                 <option value="">Choose Category</option>
                             </select>
                         </div>
-        
+                
                         <!-- How Did You Find Us -->
                         <div class="custom-form-group full-width">
                             <label for="how-find">How did you find us?</label>
-                            <select id="how-find" name="how-find">
+                            <select id="how-find" name="howFindUs">
                                 <option value="">Select an Option</option>
                             </select>
                         </div>
-        
+                
                         <!-- Additional Information -->
                         <div class="custom-form-group full-width">
                             <label for="additional-info">Additional Information</label>
-                            <textarea id="additional-info" name="additional-info" maxlength="250"></textarea>
+                            <textarea id="additional-info" name="additionalInfo" maxlength="250"></textarea>
                             <small>0 of 250 max words.</small>
                         </div>
-        
+                
                         <!-- Submit Button -->
                         <div class="custom-form-group full-width">
                             <button type="submit">Submit</button>
                         </div>
                     </div>
                 </form>
+                
             </div>
        </section>
   <!-- book section end -->
@@ -208,10 +210,10 @@
             <div class="box">
                 <img src="bard diaries by Kibirige desire edward.jpg" alt="">
                 <div class="content">
-                    <h3>Bard Diaries</h3><br>
-                     By Kibirige Desire Edward
+                    <h3>Bard Diaries (By Kibirige Desire Edward)</h3>
                     <p>
-                        BARD DIARIES is a captivating poetry book that focuses on revealing some of the rawest emotions of human nature.</p>
+                        BARD DIARIES is a captivating poetry book that focuses on revealing some of the rawest emotions of human nature.
+                    </p>
                     <div class="stars">
                         <i class="fas fa-stars"></i>
                         <i class="fas fa-stars"></i>
@@ -227,7 +229,7 @@
             <div class="box">
                 <img src="HAPPINESS WITHIN US by Kisakye Jovine.jpg" alt="">
                 <div class="content">
-                    <h3>Happiness Within Us</h3>
+                    <h3>Happiness Within Us (By Kisakye Jovine)</h3>
                     <p>Happiness Within Us is a heartfelt poetry anthology edited by Kisakye Jovine. This collection offers profound insights into joy, love, and resilience.  </p>
                     <div class="stars">
                         <i class="fas fa-stars"></i>
@@ -244,11 +246,8 @@
             <div class="box">
                 <img src="loud silence by jjingo ham.jpg" alt="">
                 <div class="content">
-                    <h3>Loud Silence</h3>
-                    <p>The Uganda Gorilla and Wildlife Safari is a thrilling 
-                        adventure that takes you deep into Bwindi Forest to encounter 
-                        mountain gorillas up close, alongside exciting game drives, boat 
-                        cruises, and more.</p>
+                    <h3>Loud Silence (By Jjingo Ham)</h3>
+                    <p>Loud Silence by Ham is a compelling anthology that delves into the profound paradoxes of life through the medium of poetry. </p>
                     <div class="stars">
                         <i class="fas fa-stars"></i>
                         <i class="fas fa-stars"></i>
@@ -264,10 +263,8 @@
             <div class="box">
                 <img src="sex crusade by godfrey olukya.png" alt="">
                 <div class="content">
-                    <h3>Sex Crusade</h3>
-                    <p>Murchison Falls is a stunning natural wonder where the Nile River 
-                        forces through a narrow gorge, creating a powerful waterfall amidst 
-                        breathtaking landscapes and diverse wildlife.</p>
+                    <h3>Sex Crusade (by Godfrey Olukya)</h3>
+                    <p>Sex Crusade exposes some evils in the society today. The author was inspired and then later compelled to write this book because of some headteachers who mistreated him together with some other teachers. </p>
                     <div class="stars">
                         <i class="fas fa-stars"></i>
                         <i class="fas fa-stars"></i>
@@ -283,8 +280,8 @@
             <div class="box">
                 <img src="shreds of hope by Owomugiisha Casper Grace.jpg" alt="">
                 <div class="content">
-                    <h3>Shreds Of Hope</h3>
-                    <p>"Embark on a trek through the Rwenzori Mountains' lush forests and icy peaks, discovering breathtaking landscapes and diverse wildlife in Uganda's highlands."</p>
+                    <h3>Shreds Of Hope (by Owomugiisha Casper Grace)</h3>
+                    <p>SHREDS OF HOPE is a journal that entails 366 timeless quotations for everyday reflection. It is written basing on the months of the year and each month has a theme. </p>
                     <div class="stars">
                         <i class="fas fa-stars"></i>
                         <i class="fas fa-stars"></i>
@@ -300,11 +297,8 @@
             <div class="box">
                 <img src="TAHARUKI KIJIJINI COVER by evans o ouma.jpg" alt="">
                 <div class="content">
-                    <h3>Taharuki Kijijini</h3>
-                    <p>Kidepo Valley National Park is a breathtaking wilderness with 
-                        dramatic landscapes, rare wildlife like cheetahs and lions, 
-                        and rich cultural encounters with the Karamojong and Ik tribes, 
-                        offering an authentic and unforgettable safari experience! </p>
+                    <h3>Taharuki Kijijini ( evans o ouma)</h3>
+                    <p>This is a drama that examines the leadership of Elder Taharuki who, in addition to running the village council in an inappropriate manner, is misled by his advisors regarding fundamental decisions in the operation and planning of the Village.  </p>
                     <div class="stars">
                         <i class="fas fa-stars"></i>
                         <i class="fas fa-stars"></i>
@@ -319,8 +313,8 @@
             <div class="box">
                 <img src="THE FERTILE ROCK by Habombo Dennis Litt.jpg" alt="">
                 <div class="content">
-                    <h3>The Fertile Rock</h3>
-                    <p>"Embark on a trek through the Rwenzori Mountains' lush forests and icy peaks, discovering breathtaking landscapes and diverse wildlife in Uganda's highlands."</p>
+                    <h3>The Fertile Rock (by Habombo Dennis Litt)</h3>
+                    <p>Erica is a widow who has found herself in a dilemma with her two sons. Her father-in-law decides to take her in with her sons, but she rejects the offer with hope that she will make it on her own. </p>
                     <div class="stars">
                         <i class="fas fa-stars"></i>
                         <i class="fas fa-stars"></i>
@@ -336,11 +330,10 @@
             <div class="box">
                 <img src="WOMAN OF NYAKAMBU by Jonan Ishimwe.jpg" alt="">
                 <div class="content">
-                    <h3>The Woman Of Nyakambu</h3>
-                    <p>Kidepo Valley National Park is a breathtaking wilderness with 
-                        dramatic landscapes, rare wildlife like cheetahs and lions, 
-                        and rich cultural encounters with the Karamojong and Ik tribes, 
-                        offering an authentic and unforgettable safari experience! </p>
+                    <h3>The Woman Of Nyakambu (by Jonan Ishimwe)</h3>
+                    <p>The Woman of Nyakambu is an appreciation of women’s efforts in society and contemporary culture.
+
+                        ...the angel who intercedes for women has woken up from a deep slumber ... </p>
                     <div class="stars">
                         <i class="fas fa-stars"></i>
                         <i class="fas fa-stars"></i>
@@ -360,15 +353,15 @@
 
          <!-- services section starts -->
   
-         <section class="services" id="services">
+        <section class="services" id="services">
             <h1 class="heading">Services</h1>
             
             <div class="box-container">
-                <a href="./hotels.html" class="box">
+                <div class="box">
                     <i class="fas fa-edit"></i>
                     <h3>Editorial Services</h3>
                     <p>We understand that a well-crafted manuscript is the foundation of a successful book. Our editorial services include manuscript assessment, developmental editing, line editing, copyediting, and professional proofreading to ensure a polished and publication-ready book.</p>
-                </a>
+                </div>
         
                 <div class="box">
                     <i class="fas fa-book"></i>
@@ -388,19 +381,19 @@
             <h2 class="desha-title">Latest Blogs</h2>
             <div class="desha-blog-grid">
                 <div class="desha-blog-card">
-                    <img src="desha.jpg" alt="Blog Image">
+                    <img src="deshablog.jpg" alt="Blog Image">
                     <div class="desha-blog-content">
-                        <h3>The Future of Publishing: Digital vs Print</h3>
-                        <p>As the publishing industry evolves, the debate between digital and print continues...</p>
-                        <a href="#" class="desha-read-more">Read More</a>
+                        <h3>The Magic Behind the Pages: Unveiling Desha Publishing House's Journey</h3>
+                        <p>Have you ever held a book in your hands and wondered about the journey it took to get there?</p>
+                        <a href="/desha-blog" class="desha-read-more">Read More</a>
                     </div>
                 </div>
                 <div class="desha-blog-card">
-                    <img src="desha2.jpg" alt="Blog Image">
+                    <img src="deshablog3.jpg" alt="Blog Image">
                     <div class="desha-blog-content">
-                        <h3>Self-Publishing vs Traditional Publishing</h3>
-                        <p>Are you an aspiring author wondering whether to self-publish or go the traditional route?...</p>
-                        <a href="#" class="desha-read-more">Read More</a>
+                        <h3>Celebrating the Vibrant Stories of Our Homeland</h3>
+                        <p>Africa breathes stories. It's a land where history, culture, and tradition intertwine, where tales are woven into the very fabric of our daily lives..</p>
+                        <a href="/echoes-of-africa" class="desha-read-more">Read More</a>
                     </div>
                 </div>
             </div>
@@ -413,7 +406,7 @@
     <div class="contents">
         <div class="profile">
             <img src="ceo.jpg" alt="Kibirige Desire Edward - Founder & CEO">
-            <h1>ABOUT THE FOUNDER & CEO</h1>
+            <h2>ABOUT THE FOUNDER & CEO</h2>
         </div>
         <div class="text">
             <p>Kibirige Desire Edward is not just the founder and CEO of Desha Publishing House; he is a literary force, a Ugandan author whose passion for storytelling has driven him to create a platform for others. Widely recognized for his evocative poetry, published in acclaimed collections like "Bard Diaries" (2024) and "The Pearl" (2023), Kibirige's creative range extends beyond verse.</p>
@@ -429,80 +422,40 @@
 </section>
 
 <!-- review section start -->
-
-<section class="review" id="review">
-    <h1 class="heading">
-        <span>r</span>
-        <span>e</span>
-        <span>v</span>
-        <span>i </span>
-        <span>e</span>
-        <span>w</span>
-    </h1>
-    <div class="review-slider">
-        <div class="wrapper">
-            <div class="slider">
-                <div class="box">
-                    <img src="Edward.jpg" alt="">
-                    <h3>Edward</h3>
-                    <p>"I had an amazing experience on this trip. The tour guides were incredibly knowledgeable, and the locations were breathtaking. From start to finish, everything was well-organized, and I felt safe the entire time. I highly recommend this experience to anyone looking for an adventure!"</p>
-                    <div class="stars">
-                        <i class="fas fa-stars"></i>
-                        <i class="fas fa-stars"></i>
-                        <i class="fas fa-stars"></i>
-                        <i class="fas fa-stars"></i>
-                        <i class="far fa-stars"></i>
-                    </div>
+<section class="review-section" id="review">
+    <h1 class="review-section-heading">What Our Authors Say</h1>
+    <div class="review-section-slider">
+        <div class="review-section-wrapper">
+            <div class="review-section-slider-container">
+                <div class="review-section-box">
+                    <img src="Jonan.jpg" alt="Reader">
+                    <h3>Baitwababo I</h3>
+                    <p>"Desha Publishing House has transformed my writing career. Their editing process is seamless, and they truly care about authors. Highly recommended!"</p>
+                    <div class="review-section-stars">★★★★★</div>
+                </div>
+                <div class="review-section-box">
+                    <img src="Kisakye.jpg" alt="Reader">
+                    <h3>Kisakye Jovine</h3>
+                    <p>"The books from Desha Publishing House are of outstanding quality. I love their diverse collection, and their customer service is top-notch!"</p>
+                    <div class="review-section-stars">★★★★★</div>
+                </div>
+                <div class="review-section-box">
+                    <img src="janam1.jpg" alt="Reader">
+                    <h3>Jonan Ishimwe</h3>
+                    <p>"Their publishing services are exceptional! From editing to marketing, Desha made my book a bestseller. I couldn't be happier!"</p>
+                    <div class="review-section-stars">★★★★★</div>
+                </div>
+                <div class="review-section-box">
+                    <img src="ham.jpg" alt="Reader">
+                    <h3>Jjingo Ham</h3>
+                    <p>"I love reading books from Desha Publishing House. They consistently publish high-quality content that keeps me engaged!"</p>
+                    <div class="review-section-stars">★★★★★</div>
                 </div>
             </div>
-    
-            <div class="slider">
-                <div class="box">
-                    <img src="tourist2.png" alt="">
-                    <h3>Happy Janet</h3>
-                    <p>"What a wonderful exper ience! Everything was perfect, from the transportation to the food. The local culture and history were fascinating, and I loved the chance to immerse myself in a new environment. A definite 5-star experience, can't wait to do it again!"</p>
-                    <div class="stars">
-                        <i class="fas fa-stars"></i>
-                        <i class="fas fa-stars"></i>
-                        <i class="fas fa-stars"></i>
-                        <i class="fas fa-stars"></i>
-                        <i class="far fa-stars"></i>
-                    </div>
-                </div>
-            </div>
-    
-            <!-- <div class="slider">
-                <div class="box">
-                    <img src="tourist.png" alt="">
-                    <h3>Prince Jade</h3>
-                    <p>"This trip was absolutely unforgettable! I felt like I was able to see and do so much in such a short time. The team was friendly, professional, and always available for any questions. Highly recommend this tour to anyone looking for a comprehensive and enjoyable trip!"</p>
-                    <div class="stars">
-                        <i class="fas fa-stars"></i>
-                        <i class="fas fa-stars"></i>
-                        <i class="fas fa-stars"></i>
-                        <i class="fas fa-stars"></i>
-                        <i class="far fa-stars"></i>
-                    </div>
-                </div>
-            </div> -->
-    
-            <!-- <div class="slider">
-                <div class="box">
-                    <img src="tourist1.png" alt="">
-                    <h3>Mable Musimenta</h3>
-                    <p>"I had an amazing time. Everything was meticulously planned and it was clear that the organizers care deeply about giving us the best experience. The highlights of the trip for me were the scenic views and the chance to meet new people. Can’t wait for the next adventure!"</p>
-                    <div class="stars">
-                        <i class="fas fa-stars"></i>
-                        <i class="fas fa-stars"></i>
-                        <i class="fas fa-stars"></i>
-                        <i class="fas fa-stars"></i>
-                        <i class="far fa-stars"></i>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </div>
-    
+</section>
+
 <!-- review section end -->
 
 
@@ -530,77 +483,21 @@
 
 <!-- contact section end -->
 
-<!-- <section class="reviews-section">
-    <div class="container">
-        <h2>Client Reviews & Ratings</h2>
-        <div class="review-form">
-            <form id="review-form" action="/submit-review" method="POST">
-                <div class="input-group">
-                    <label for="client-name">Your Name</label>
-                    <input type="text" id="client-name" name="clientName" required>
-                </div>
-                
-                <div class="input-group">
-                    <label for="client-review">Your Review</label>
-                    <textarea id="client-review" name="clientReview" rows="4" required></textarea>
-                </div>
-                
-                <div class="input-group">
-                    <label for="client-rating">Your Rating</label>
-                    <select id="client-rating" name="clientRating" required>
-                        <option value="5">★★★★★</option>
-                        <option value="4">★★★★</option>
-                        <option value="3">★★★</option>
-                        <option value="2">★★</option>
-                        <option value="1">★</option>
-                    </select>
-                </div>
-                
-                <button type="submit" class="btn">Submit Review</button>
-            </form>
-        </div>
-    
-        <div class="submitted-reviews" id="submitted-reviews">
-        </div>
-    </div>
-</section> -->
-<!-- Updated Payment Section -->
-<!-- <section class="payment-section">
-    <h2>Make a Secure Online Payment</h2>
-    <a href="https://store.pesapal.com/rahavoyagesafarislimited" target="_blank">
-        <button type="button" class="pesapal-button">
-            <img src="pesapal2.png" alt="Pesapal Icon" style="width: 100px; height: 80px; vertical-align: middle; margin-right: 8px;" />
-            Pay with Pesapal
-        </button>
-    </a>
-</section> -->
 
-<!-- Payment Details Section -->
-<!-- <section class="payment-details">
-    <h2>Bank and Mobile Money Details</h2>
-    <div class="detail-container">
-        <p><strong>Bank Account:</strong> Account Name: RAHA VOYAGE SAFARIS LIMITED, Account Number: 03897609002, Bank: Bank of Africa-Uganda Ltd</p>
-        <p><strong>Account Currency:</strong> Uganda Shillings</p>
-        <p><strong>MTN Mobile Money:</strong> Phone Number: 0767104774</p>
-        <p><strong>Airtel Money:</strong> Phone Number: 0751031206</p>
-    </div>
-</section> -->
-
-<section id="partners" style="text-align: center; padding: 40px;">
-    <h2>Our Partners</h2>
+<section id="imprints" style="text-align: center; padding: 40px;">
+    <h2>Our Imprints</h2>
     <div style="max-width: 800px; margin: 0 auto; font-size: 1.4em;">
         <p>
-            At Royal Voyage, we are committed to delivering exceptional travel experiences, and we do this through valuable partnerships with recognized organizations in the tourism industry. We partner with The Uganda Tourism Board, and the Association of Uganda Tour Operators to ensure quality, compliance, and professionalism in all our tours.
-        </p>
+            Desha Publishing House expands its reach with a family of imprints, each focused on unique voices and genres. Dez Audio brings stories to life through immersive soundscapes. Dez Press showcases African Literature, amplifying the continent's rich cultural heritage.        </p>
         <p>
-            Our network of partners includes certified institutions that uphold high standards in tourism, allowing us to provide reliable and ethical services for travelers exploring Africa. When you choose Raya Voyage for your next adventure, you can be assured that you are partnering with trusted professionals.
-        </p>
+            Dez Publishing offers insightful perspectives and expert knowledge through non-fiction titles. KDE Children's Books House nurtures young minds with enchanting tales and imaginative worlds. Together, these imprints demonstrate Desha Publishing House's commitment to diversity, innovation, and literary excellence.        </p>
     </div>
 
     <div style="display: flex; justify-content: center; gap: 20px; margin-top: 20px;">
-        <img src="./UWA.png" alt="Uganda Wildlife Authority" style="height: 100px;">
-        <img src="./UTB.png" alt="Uganda Tourism Board" style="height: 100px;">
-        <img src="./AUTO.png" alt="Association of Uganda Tour Operators" style="height: 100px;">
+        <img src="./DEZ AUDIO.png" alt="Imprint 1" style="height: 100px;">
+        <img src="./DEZ PRESS.png" alt="Imprint 2" style="height: 100px;">
+        <img src="./DEZ PUBLISHING.png" alt="Imprint 3" style="height: 100px;">
+        <img src="./KDE CHILDREN BOOKS.png" alt="Imprint 1" style="height: 100px;">
     </div>
 </section>
 
@@ -623,19 +520,21 @@
             <p>At <strong>Desha Publishing House</strong>, we believe in the transformative power of words. Founded on integrity, creativity, and inclusivity, we strive to nurture authors and publish works that inspire, educate, and entertain.</p>          
         </div>
 
-        <div class="box">
+        <!-- <div class="box">
             <h3>Branch Location</h3>
             <p>Mbale Town | Republic Street, next to Hilltop Hotel, Uganda</p>
-        </div>
+        </div> -->
 
-        <!-- <div class="box">
+        <div class="box">
             <h3>Quick Links</h3>
             <a href="#">Home</a>
             <a href="#">Books</a>
             <a href="#">Packages</a>
             <a href="#">Services</a>
             <a href="#">Contact</a>
-        </div> -->
+            <a href="https://drive.google.com/drive/folders/1fNg_T-SKykyhQbT30UN1mBkT_zXy3r3V?usp=sharing">Download Our App</a>
+
+        </div>
 
         <div class="box">
             <h3>Follow Us</h3>
@@ -647,11 +546,11 @@
                 <a href="https://www.tiktok.com/@desha_publishing_house?_t=ZM-8uOpJKkxeJ4&_r=1" target="_blank"><i class="fab fa-tiktok"></i></a>
                 <a href="https://youtube.com/@deshapublishinghouse?si=_I21Kei3uG61-I-8" target="_blank"><i class="fab fa-youtube"></i></a>
             </div>
-            <h3>Contacts: (+256) 76104774 | 759960242</h3>
+            <h1>Support: deshapublishinghousehelp@outlook.com</h1>
         </div>
     </div>
 
-    <p class="credit">&copy; 2025 Desha Publishing House. All rights reserved. Developed by <strong>@Janet Aballo</strong>.</p>
+    <p class="credit">&copy; 2020-2025 Desha Publishing House. All rights reserved. Developed by <strong>@Janet Aballo</strong>.</p>
 </section>
 
 <!-- footer section end -->
