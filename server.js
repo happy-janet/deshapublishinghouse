@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
 const helmet = require("helmet");
-const path = require("path");
+const path = require("path"); // ✅ Add this to avoid "path is not defined" error
 
 const Booking = require("./Models/PublishingBooking");
 const app = express();
@@ -27,29 +27,30 @@ app.use(helmet()); // Set security headers
 // Connect to MongoDB
 const mongoURI = process.env.MONGO_URI;
 mongoose
-  .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(mongoURI)
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => {
     console.error("Failed to connect to MongoDB:", err.message);
     process.exit(1);
   });
 
-// Update the sendEmail function
+// **Updated sendEmail Function for Gmail**
 const sendEmail = async (recipient, subject, text, from) => {
   try {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+        user: process.env.EMAIL_USER, // Your Gmail address
+        pass: process.env.EMAIL_PASS, // Use an App Password if 2FA is enabled
       },
     });
 
     const mailOptions = {
-      from: from || process.env.EMAIL_USER, // Use client's email if provided
+      from: `"Desha Publishing House" <${process.env.EMAIL_USER}>`, // Keep your email
       to: recipient,
       subject: subject,
       text: text,
+      replyTo: from || process.env.EMAIL_USER, // Use client's email for replies
     };
 
     const info = await transporter.sendMail(mailOptions);
@@ -59,7 +60,8 @@ const sendEmail = async (recipient, subject, text, from) => {
   }
 };
 
-// Handle Publishing Booking Form Submission
+
+// **Handle Publishing Booking Form Submission**
 app.post("/book-publishing", async (req, res) => {
   try {
     const {
@@ -82,21 +84,13 @@ app.post("/book-publishing", async (req, res) => {
     const clientSubject = "Publishing Booking Confirmation";
     const clientText = `Thank you for reaching out to us!\n\nHere are your submission details:\n- Name: ${name} ${surname}\n- Email: ${email}\n- Phone: ${phone}\n- Country: ${country}\n- Book Title: ${bookTitle}\n- Word Count: ${wordCount}\n- Language: ${language}\n- Category: ${category}\n- How Did You Find Us: ${howFindUs}\n- Additional Info: ${additionalInfo}`;
 
-    try {
-      await sendEmail(email, clientSubject, clientText);
-    } catch (emailError) {
-      console.error("Error sending confirmation email:", emailError.message);
-    }
+    await sendEmail(email, clientSubject, clientText);
 
-    // Prepare the email for the company
+    // Prepare the email for Desha
     const companySubject = "New Publishing Booking Received";
     const companyText = `New publishing request received!\n\nDetails:\n- Name: ${name} ${surname}\n- Email: ${email}\n- Phone: ${phone}\n- Country: ${country}\n- Book Title: ${bookTitle}\n- Word Count: ${wordCount}\n- Language: ${language}\n- Category: ${category}\n- How Did You Find Us: ${howFindUs}\n- Additional Info: ${additionalInfo}`;
 
-    try {
-      await sendEmail("deshapublishinghousehelp@outlook.com", companySubject, companyText);
-    } catch (companyEmailError) {
-      console.error("Error sending company notification email:", companyEmailError.message);
-    }
+    await sendEmail("deshaapps@gmail.com", companySubject, companyText);
 
     res.send("Your publishing submission has been received. We will get back to you soon!");
   } catch (error) {
@@ -105,11 +99,17 @@ app.post("/book-publishing", async (req, res) => {
   }
 });
 
-// Handle Contact Form Submission
-app.post("/contact", (req, res) => {
+// **Handle Contact Form Submission**
+app.post("/contact", async (req, res) => {
   try {
     const { name, email, message } = req.body;
     console.log("Contact form submitted:", { name, email, message });
+
+    // Send email to Desha
+    const companySubject = "New Contact Form Submission";
+    const companyText = `New message received from ${name} (${email}):\n\n${message}`;
+
+    await sendEmail("deshaapps@gmail.com", companySubject, companyText);
 
     res.send("Thank you for contacting us! We shall get back to you shortly.");
   } catch (error) {
@@ -127,7 +127,7 @@ app.get("/echoes-of-africa", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "echoes-of-africa.html"));
 });
 
-// Start the server
+// ✅ **FIX: Keep only ONE `PORT` declaration**
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
