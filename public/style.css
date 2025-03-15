@@ -1,5 +1,108 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
 
+/* Global responsive styles */
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  /* Typography responsive scaling */
+  h1 {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+  }
+  
+  h2 {
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+  }
+  
+  h3 {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+  }
+  
+  p, li {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    line-height: 1.6;
+  }
+  
+  /* Section spacing */
+  section {
+    padding: clamp(30px, 5vw, 60px) 0;
+  }
+  
+  /* Images */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Lists */
+  ul, ol {
+    padding-left: 20px;
+  }
+  
+  /* Standard responsive grid */
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+  }
+  
+  .col {
+    flex: 1;
+    padding: 0 15px;
+  }
+  
+  /* Responsive breakpoints */
+  @media screen and (max-width: 992px) {
+    .row {
+      margin: 0 -10px;
+    }
+    
+    .col {
+      padding: 0 10px;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .row {
+      flex-direction: column;
+    }
+    
+    .col {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    
+    /* Navigation adjustments would go here */
+  }
+  
+  @media screen and (max-width: 480px) {
+    .container {
+      padding: 0 15px;
+    }
+    
+    section {
+      padding: 25px 0;
+    }
+    
+    ul, ol {
+      padding-left: 15px;
+    }
+  }
+
+
 :root{
     --orange:#00B7FF;
 }
