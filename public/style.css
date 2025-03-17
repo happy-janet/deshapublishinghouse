@@ -741,9 +741,9 @@ input, select, textarea {
 }
 
 label {
-    color: #ff5722;
+    color: #265568;
     font-weight: bold;
-    font-size: 1.70rem;
+    font-size: 2rem;
 }
 
 /* Reduce textarea height */
