@@ -16,10 +16,13 @@ app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded form da
 app.use(bodyParser.json()); // Parse JSON form data
 app.use(
   cors({
-    origin: "https://your-frontend-domain.com", // Replace with your frontend domain
+    origin: [
+      "https://deshapublishinghouse.com", 
+      "https://www.deshapublishinghouse.com"
+    ],
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true, // Allow credentials if necessary
+    credentials: true,
   })
 );
 app.use(helmet()); // Set security headers

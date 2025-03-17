@@ -86,3 +86,41 @@ populateDropdown("country", countries);
 populateDropdown("category", categories);
 populateDropdown("language", languages);
 populateDropdown("how-find", findUsOptions);
+
+document.addEventListener('DOMContentLoaded', function() {
+    const publishingForm = document.getElementById('publishingBookingForm');
+    
+    if (publishingForm) {
+      publishingForm.addEventListener('submit', async function(e) {
+        e.preventDefault(); // Prevent page reload
+        
+        const formData = new FormData(this);
+        const formDataObj = {};
+        
+        formData.forEach((value, key) => {
+          formDataObj[key] = value;
+        });
+        
+        try {
+          const response = await fetch('/book-publishing', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formDataObj)
+          });
+          
+          if (response.ok) {
+            const responseText = await response.text();
+            alert(responseText); // Show success message
+            publishingForm.reset(); // Clear form
+          } else {
+            alert('Form submission failed. Please try again.');
+          }
+        } catch (error) {
+          console.error('Error submitting form:', error);
+          alert('Error submitting form. Please try again later.');
+        }
+      });
+    }
+  });
