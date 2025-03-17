@@ -1,11 +1,13 @@
-require("dotenv").config(); // Load environment variables from .env file
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const nodemailer = require("nodemailer");
 const cors = require("cors");
 const helmet = require("helmet");
-const path = require("path"); // ✅ Add this to avoid "path is not defined" error
+const path = require("path");
+require("dotenv").config(); // Load environment variables
+
+// Import sendEmail from mailer.js
+const sendEmail = require("./mailer");
 
 const Booking = require("./Models/PublishingBooking");
 const app = express();
@@ -17,7 +19,7 @@ app.use(bodyParser.json()); // Parse JSON form data
 app.use(
   cors({
     origin: [
-      "https://deshapublishinghouse.com", 
+      "https://deshapublishinghouse.com",
       "https://www.deshapublishinghouse.com"
     ],
     methods: ["GET", "POST"],
@@ -37,34 +39,7 @@ mongoose
     process.exit(1);
   });
 
-// **Updated sendEmail Function for Gmail**
-const sendEmail = async (recipient, subject, text, from) => {
-  try {
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER, // Your Gmail address
-        pass: process.env.EMAIL_PASS, // Use an App Password if 2FA is enabled
-      },
-    });
-
-    const mailOptions = {
-      from: `"Desha Publishing House" <${process.env.EMAIL_USER}>`, // Keep your email
-      to: recipient,
-      subject: subject,
-      text: text,
-      replyTo: from || process.env.EMAIL_USER, // Use client's email for replies
-    };
-
-    const info = await transporter.sendMail(mailOptions);
-    console.log("Email sent: " + info.response);
-  } catch (error) {
-    console.error("Error sending email:", error);
-  }
-};
-
-
-// **Handle Publishing Booking Form Submission**
+// Handle Publishing Booking Form Submission
 app.post("/book-publishing", async (req, res) => {
   try {
     const {
@@ -102,7 +77,7 @@ app.post("/book-publishing", async (req, res) => {
   }
 });
 
-// **Handle Contact Form Submission**
+// Handle Contact Form Submission
 app.post("/contact", async (req, res) => {
   try {
     const { name, email, message } = req.body;
@@ -130,13 +105,11 @@ app.get("/echoes-of-africa", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "echoes-of-africa.html"));
 });
 
-// ✅ **FIX: Keep only ONE `PORT` declaration**
+// Start the server
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
-
 
 
 

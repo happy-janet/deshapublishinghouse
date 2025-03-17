@@ -102,6 +102,27 @@
     }
   }
 
+/* Prevent horizontal overflow */
+html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+  
+  /* Control horizontal overflow on all elements */
+  * {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+  
+  /* Fix for tables and other potentially problematic elements */
+  table, pre, code {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+
 
 :root{
     --orange:#00B7FF;
