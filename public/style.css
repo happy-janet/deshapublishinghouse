@@ -410,187 +410,342 @@ section{
     background: none;
 }
 /* General Header Styles */
+/* Modern Header and Navbar Styles with Fixed Position */
 header {
+    position: fixed; /* Change from sticky to fixed */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  /* Make room for the fixed header */
+  body {
+    padding-top: 70px; /* Adjust based on your header height */
+  }
+  
+  /* Logo Styles */
+  header .logo {
+    display: flex;
+    align-items: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #2d3748;
+    text-decoration: none;
+    gap: 0.5rem;
+  }
+  
+  .logo-image {
+    height: 40px;
+    width: auto;
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  .logo:hover .logo-image {
+    transform: rotate(10deg) scale(1.1);
+  }
+  
+  /* Navbar Menu Items with Enhanced Default Styling */
+  header .navbar {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  header .navbar a {
+    /* Text Styling */
+    color: #2d3748;
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-decoration: none;
+    
+    /* Layout and Spacing */
+    padding: 0.7rem 1.2rem;
+    position: relative;
+    overflow: hidden;
+    
+    /* Remove existing borders */
+    border: none;
+    border-radius: 10px;
+    
+    /* Default background with subtle gradient */
+    background: linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(240,242,255,0.8) 100%);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    
+    /* Transitions */
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  /* Beautiful background effect on menu items */
+  header .navbar a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      rgba(0, 183, 255, 0.1), 
+      rgba(79, 70, 229, 0.15));
+    transition: left 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: -1;
+  }
+  
+  /* Always-visible decorative dot */
+  header .navbar a::after {
+    content: '';
+    position: absolute;
+    bottom: 6px;
+    left: 50%;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: linear-gradient(90deg, #00B7FF, #4F46E5);
+    transform: translateX(-50%) scale(1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0.7;
+  }
+  
+  /* Hover State for Menu Items */
+  header .navbar a:hover {
+    color: #4F46E5;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.15);
+  }
+  
+  header .navbar a:hover::before {
+    left: 0;
+  }
+  
+  header .navbar a:hover::after {
+    width: 70%;
+    height: 3px;
+    border-radius: 3px;
+    opacity: 1;
+  }
+  
+  /* Active menu item */
+  header .navbar a.active {
+    color: #4F46E5;
+    background: linear-gradient(135deg, rgba(240,242,255,0.9) 0%, rgba(227,231,255,0.9) 100%);
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+  }
+  
+  header .navbar a.active::after {
+    width: 70%;
+    height: 3px;
+    border-radius: 3px;
+  }
+  
+  /* Menu Bar Icon */
+  #menu-bar {
+    display: none;
+    font-size: 2.5rem;
+    color: #2d3748;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    background: none;
+    padding: 0.5rem;
+  }
+  
+  #menu-bar:hover {
+    color: #4F46E5;
+    transform: rotate(15deg);
+  }
+  
+  /* Adding overlay for mobile menu */
+  .navbar-overlay {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    background: #f9f7f4;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.5rem 4%; /* Reduced padding for better alignment */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-}
-
-/* Logo Section */
-header .logo {
-    font-size: 2.5rem; /* Slightly reduced size for better proportion */
-    font-weight: bolder;
-    color: #FF4800; /* Main logo text color */
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    gap: 0.5rem; /* Small spacing between logo image and text */
-}
-
-header .logo span {
-    color: var(--orange); /* Secondary logo text color */
-    margin-left: -0.1rem; /* Ensures no space between the text and span */
-}
-
-/* Logo Image Styles */
-header .logo-image {
-    width: 60px; /* Smaller size for better alignment */
-    height: auto;
-    border-radius: 5px;
-}
-
-/* Navbar Menu Items */
-header .navbar {
-    display: flex; /* Ensures all menu items are in one line */
-    align-items: center;
-    gap: 1.5rem; /* Space between menu items */
-}
-
-header .navbar a {
-    /* Text Styling */
-    color: rgb(55, 65, 81); /* Preferred color */
-    font-size: 1.7rem; /* Adjusted font size for better readability */
-    font-weight: 500;
-    text-decoration: none;
-
-    /* Layout and Spacing */
-    padding: 0.5rem 1rem;
-
-    /* Border and Background */
-    border: 2px solid transparent;
-    border-bottom: 2px solid #00B7FF;
-    border-radius: 8px;
-
-    /* Shadows and Effects */
-    box-shadow: 0 2px 5px rgba(22, 163, 74, 0.2);
-
-    /* Transitions */
-    transition: color 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
-}
-
-/* Hover State for Menu Items */
-header .navbar a:hover {
-    color: var(--orange); /* Change color on hover */
-    transform: scale(1.05); /* Slight zoom effect */
-    border-color: #00B7FF; /* Highlight borders */
-    background-color: rgba(120, 218, 228, 0.1); /* Subtle background change */
-}
-
-/* Icon Styles */
-header .icons i {
-    font-size: 2.2rem; /* Adjusted size for consistency */
-    color: #333; /* Dark gray for better contrast */
-    cursor: pointer;
-    margin-left: 1rem; /* Space between icons and menu */
-}
-
-header .icons i:hover {
-    color: var(--orange); /* Change color on hover */
-}
-
-/* Media Query for Smaller Screens */
-@media (max-width: 768px) {
-    /* Adjust Header Layout */
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .navbar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Scroll-aware header styling */
+  header.scrolled {
+    padding: 0.7rem 2rem;
+    background-color: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  }
+  
+  /* Media Query for Smaller Screens */
+  @media (max-width: 991px) {
+    /* Adjust body padding for fixed header */
+    body {
+      padding-top: 60px; /* Smaller padding for mobile */
+    }
+    
     header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 1rem 2rem;
+      padding: 1rem;
     }
-
-    /* Ensure Navbar Stays in One Line */
-    header .navbar {
-        flex-wrap: nowrap; /* Prevents wrapping on small screens */
-        overflow-x: auto; /* Allows horizontal scrolling if needed */
-        scrollbar-width: thin; /* Reduces scrollbar size */
-        scrollbar-color: #ccc transparent; /* Customizes scrollbar appearance */
-        width: 100%; /* Full-width navbar */
-        display: none; /* Hide navbar by default on small screens */
-        position: absolute; /* Ensure it's positioned properly */
-        top: 4rem; /* Adjust position from top of header */
-        left: 0; /* Align to left of screen */
-        background-color: #333; /* Background color for the navbar */
-        z-index: 999; /* Make sure the navbar stays above other elements */
-        transition: all 0.3s ease; /* Smooth transition for toggling */
+    
+    #menu-bar {
+      display: block;
+      z-index: 1001;
+      order: 3;
     }
-
-    /* Make the Navbar items more compact */
-    header .navbar a {
-        font-size: 1.4rem; /* Reduced font size for smaller screens */
-        padding: 0.8rem; /* Increased padding for easier clicking */
-        color: white; /* Ensure links are visible */
-        display: block; /* Stack links vertically */
-    }
-
-    /* Adjust Icons */
-    header .icons i {
-        font-size: 2rem;
-        margin-left: 0.5rem;
-    }
-
-    /* Adjust Logo */
+    
     header .logo {
-        font-size: 2rem;
-        gap: 0.3rem;
+      font-size: 1.8rem;
+      order: 1;
     }
-
-    header .logo-image {
-        width: 30px; /* Further reduce size for smaller screens */
+    
+    .logo-image {
+      height: 32px;
     }
-
-    /* Menu Icon: Make sure it is positioned on the right */
+    
+    header .navbar {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 80%;
+      max-width: 300px;
+      height: 100vh;
+      background: white;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 5rem 2rem 2rem;
+      gap: 1.2rem;
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+      transition: left 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+      z-index: 1000;
+      overflow-y: auto;
+    }
+    
+    header .navbar.active {
+      left: 0;
+    }
+    
+    header .navbar a {
+      font-size: 1.7rem;
+      width: 100%;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+    }
+    
+    header .navbar a::before {
+      display: none;
+    }
+    
+    header .navbar a::after {
+      bottom: 50%;
+      left: 12px;
+      transform: translateY(50%);
+    }
+    
+    header .navbar a:hover {
+      transform: translateX(5px);
+    }
+    
+    header .navbar a:hover::after {
+      width: 8px;
+      height: 8px;
+      opacity: 1;
+    }
+    
+    /* Animated Menu Icon */
+    #menu-bar.active {
+      transform: rotate(90deg);
+    }
+  }
+  
+  /* Animation for menu items when opening */
+  @media (max-width: 991px) {
+    header .navbar a {
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+    }
+    
+    header .navbar.active a {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    /* Staggered animation for each menu item */
+    header .navbar.active a:nth-child(1) { transition-delay: 0.1s; }
+    header .navbar.active a:nth-child(2) { transition-delay: 0.15s; }
+    header .navbar.active a:nth-child(3) { transition-delay: 0.2s; }
+    header .navbar.active a:nth-child(4) { transition-delay: 0.25s; }
+    header .navbar.active a:nth-child(5) { transition-delay: 0.3s; }
+    header .navbar.active a:nth-child(6) { transition-delay: 0.35s; }
+  }
+  
+  /* Smaller devices adjustments */
+  @media (max-width: 576px) {
+    body {
+      padding-top: 55px;
+    }
+  
+    header {
+      padding: 0.8rem;
+    }
+    
+    header .logo {
+      font-size: 1.6rem;
+    }
+    
+    .logo-image {
+      height: 28px;
+    }
+    
     #menu-bar {
-        color: rgb(27, 25, 25);
-        border: 0.1rem solid rgb(50, 46, 46);
-        border-radius: 0.5rem;
-        font-size: 3rem;
-        padding: 0.5rem 1.2rem;
-        cursor: pointer;
-        display: block; /* Display the menu icon on small screens */
-        position: absolute; /* Fix position */
-        right: 1rem; /* Align it to the right side */
-        top: 1.5rem; /* Adjust vertical position */
+      font-size: 2.2rem;
     }
-
-    /* Navbar toggle visibility */
-    .navbar.active {
-        display: flex; /* Show navbar when it's active */
-        flex-direction: column; /* Stack navbar items vertically */
+    
+    header .navbar {
+      width: 85%;
+      padding: 4rem 1.5rem 2rem;
     }
-
-    /* Optionally, you can add a backdrop to the navbar for better UX */
-    .navbar.active::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
-        z-index: -1; /* Keep it behind the navbar */
+  }
+  
+  /* Animation for when page loads */
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
     }
-}
-
-/* Ensure the menu icon is hidden on larger screens */
-@media (min-width: 769px) {
-    #menu-bar {
-        display: none; /* Hide on larger screens */
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
-}
-
-.navbar.active {
-    display: flex; /* Ensure the navbar is visible when the class is active */
-    flex-direction: column;
-}
-
+  }
+  
+  header {
+    animation: fadeInDown 0.6s ease-out forwards;
+  }
+  
+  header .navbar a {
+    animation: fadeInDown 0.5s ease-out forwards;
+  }
+  
+  header .navbar a:nth-child(1) { animation-delay: 0.1s; }
+  header .navbar a:nth-child(2) { animation-delay: 0.2s; }
+  header .navbar a:nth-child(3) { animation-delay: 0.3s; }
+  header .navbar a:nth-child(4) { animation-delay: 0.4s; }
+  header .navbar a:nth-child(5) { animation-delay: 0.5s; }
+  header .navbar a:nth-child(6) { animation-delay: 0.6s; }
 
 /* General Reset */
 * {
@@ -762,7 +917,7 @@ input, select, textarea {
 }
 
 label {
-    color: #265568;
+    color: #ff5722;
     font-weight: bold;
     font-size: 2rem;
 }
@@ -1523,126 +1678,133 @@ li:hover p {
 /* Review Section */
 /* Review Section */
 /* Review Section */
+/* Review Section */
+
+/* Review Section Styles */
 .review-section {
-    width: 90%;
-    margin: auto;
+    padding: 4rem 1rem;
+    background-color: #f8f9fa;
     text-align: center;
-    padding: 60px 0;
-    background: #f9f9f9;
-}
-
-/* Heading */
-.review-section-heading {
-    font-size: 2rem;
-    font-weight: bold;
+    max-width: 100%;
+    overflow: hidden;
+  }
+  
+  .review-section-heading {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
     color: #333;
-    text-transform: uppercase;
-    margin-bottom: 30px;
     position: relative;
-}
-
-.review-section-heading::after {
-    content: "";
+    display: inline-block;
+  }
+  
+  .review-section-heading::after {
+    content: '';
+    display: block;
     width: 80px;
     height: 4px;
-    background: #ff6600;
+    background-color: #5d87ff;
     position: absolute;
-    left: 50%;
     bottom: -10px;
+    left: 50%;
     transform: translateX(-50%);
     border-radius: 2px;
-}
-
-/* Review Slider */
-.review-section-slider {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    max-width: 800px;
-    margin: auto;
-    overflow: hidden;
-}
-
-/* Review Boxes */
-.review-section-wrapper {
-    display: flex;
-    transition: transform 0.7s ease-in-out;
-    width: 100%;
-}
-
-.review-section-slider-container {
-    display: flex;
-    width: 400%; /* 4 slides */
-}
-
-.review-section-box {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    width: 100%;
-    max-width: 320px;
-    transition: transform 0.3s ease-in-out;
-    margin: 0 10px;
-}
-
-.review-section-box:hover {
-    transform: translateY(-5px);
-}
-
-.review-section-box img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-    border: 3px solid #ff6600;
-}
-
-.review-section-box h3 {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #222;
-    margin-bottom: 10px;
-}
-
-.review-section-box p {
-    font-size: 1rem;
-    color: #555;
-    line-height: 1.5;
-    padding: 0 10px;
-}
-
-.review-section-stars {
-    font-size: 1.2rem;
-    color: #ffcc00;
-    margin-top: 10px;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .review-section-box {
-        max-width: 280px;
-    }
-    .review-section-heading {
-        font-size: 1.8rem;
-    }
-}
-
-
-
-/* Circular Blog Section */
-.circular-blog-section {
+  }
+  
+  .review-carousel {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .review-section-box {
+    background-color: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #f4f4f9;
-    text-align: center;
-    padding: 20px;
-}
+    height: 100%;
+  }
+  
+  .review-section-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+  }
+  
+  .review-section-box img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 4px solid #f0f4ff;
+  }
+  
+  .review-section-box h3 {
+    margin: 0.5rem 0;
+    color: #333;
+    font-size: 1.25rem;
+  }
+  
+  .review-section-box p {
+    margin: 1rem 0;
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.6;
+    flex-grow: 1;
+  }
+  
+  .review-section-stars {
+    color: #ffb400;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    margin-top: 0.5rem;
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 992px) {
+    .review-carousel {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .review-section-heading {
+      font-size: 2.2rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .review-section {
+      padding: 3rem 1rem;
+    }
+    
+    .review-section-heading {
+      font-size: 2rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .review-carousel {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    
+    .review-section-heading {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+    }
+    
+    .review-section-box {
+      padding: 1.5rem;
+    }
+  }
+
+
+
+
 
 .section-heading {
     font-size: 4rem;
@@ -1657,9 +1819,10 @@ li:hover p {
 }
 .desha-title {
     text-align: center;
-    font-size: 2em;
+    font-size: 4em;
     margin-bottom: 20px;
     animation: fadeIn 1s ease-in-out;
+    color: white;
 }
 .desha-blog-grid {
     display: grid;
@@ -1845,4 +2008,135 @@ li:hover p {
 
 .whatsapp-icon:hover {
     transform: scale(1.1);
+}
+
+/* Imprints Section Styles */
+#imprints {
+  padding: 5rem 2rem;
+  text-align: center;
+  background-color: #f9f9f9;
+  position: relative;
+  overflow: hidden;
+}
+
+#imprints::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(to right, #5d87ff, #5d87ff);
+}
+
+#imprints h2 {
+  font-size: 2.8rem;
+  margin-bottom: 2.5rem;
+  color: #333;
+  position: relative;
+  display: inline-block;
+}
+
+#imprints h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: #5d87ff;
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+#imprints .content-container {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #555;
+}
+
+#imprints p {
+  margin-bottom: 1.5rem;
+}
+
+#imprints p:last-child {
+  margin-bottom: 0;
+}
+
+#imprints .imprint-logos {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+
+#imprints .imprint-logo {
+  height: 100px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: grayscale(15%);
+}
+
+#imprints .imprint-logo:hover {
+  transform: translateY(-5px);
+  filter: grayscale(0%);
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 992px) {
+  #imprints h2 {
+    font-size: 2.4rem;
+  }
+  
+  #imprints .content-container {
+    font-size: 1.1rem;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #imprints {
+    padding: 4rem 1.5rem;
+  }
+  
+  #imprints h2 {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  #imprints .content-container {
+    font-size: 1rem;
+  }
+  
+  #imprints .imprint-logos {
+    gap: 2rem;
+  }
+  
+  #imprints .imprint-logo {
+    height: 80px;
+  }
+}
+
+@media (max-width: 576px) {
+  #imprints {
+    padding: 3rem 1rem;
+  }
+  
+  #imprints h2 {
+    font-size: 2rem;
+  }
+  
+  #imprints .imprint-logos {
+    gap: 1.5rem;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #imprints .imprint-logo {
+    height: 70px;
+    margin-bottom: 0.5rem;
+  }
 }

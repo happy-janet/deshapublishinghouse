@@ -21,6 +21,7 @@
 <body>
     <!-- header section start -->
     <header>
+        <div class="navbar-overlay"></div>
         <div id="menu-bar" class="fas fa-bars"></div>
         <a href="#" class="logo">
           <img src="Desha Publishin House Logo.png" alt="Desha Publishing House Logo" class="logo-image"> 
@@ -424,37 +425,34 @@
 <!-- review section start -->
 <section class="review-section" id="review">
     <h1 class="review-section-heading">What Our Authors Say</h1>
-    <div class="review-section-slider">
-        <div class="review-section-wrapper">
-            <div class="review-section-slider-container">
-                <div class="review-section-box">
-                    <img src="Jonan.jpg" alt="Reader">
-                    <h3>Baitwababo I</h3>
-                    <p>"Desha Publishing House has transformed my writing career. Their editing process is seamless, and they truly care about authors. Highly recommended!"</p>
-                    <div class="review-section-stars">★★★★★</div>
-                </div>
-                <div class="review-section-box">
-                    <img src="Kisakye.jpg" alt="Reader">
-                    <h3>Kisakye Jovine</h3>
-                    <p>"The books from Desha Publishing House are of outstanding quality. I love their diverse collection, and their customer service is top-notch!"</p>
-                    <div class="review-section-stars">★★★★★</div>
-                </div>
-                <div class="review-section-box">
-                    <img src="janam1.jpg" alt="Reader">
-                    <h3>Jonan Ishimwe</h3>
-                    <p>"Their publishing services are exceptional! From editing to marketing, Desha made my book a bestseller. I couldn't be happier!"</p>
-                    <div class="review-section-stars">★★★★★</div>
-                </div>
-                <div class="review-section-box">
-                    <img src="ham.jpg" alt="Reader">
-                    <h3>Jjingo Ham</h3>
-                    <p>"I love reading books from Desha Publishing House. They consistently publish high-quality content that keeps me engaged!"</p>
-                    <div class="review-section-stars">★★★★★</div>
-                </div>
-            </div>
+    <div class="review-carousel">
+        <div class="review-section-box">
+            <img src="Jonan.jpg" alt="Reader">
+            <h3>Baitwababo I</h3>
+            <p>"Desha Publishing House has transformed my writing career. Their editing process is seamless, and they truly care about authors. Highly recommended!"</p>
+            <div class="review-section-stars">★★★★★</div>
+        </div>
+        <div class="review-section-box">
+            <img src="Kisakye.jpg" alt="Reader">
+            <h3>Kisakye Jovine</h3>
+            <p>"The books from Desha Publishing House are of outstanding quality. I love their diverse collection, and their customer service is top-notch!"</p>
+            <div class="review-section-stars">★★★★★</div>
+        </div>
+        <div class="review-section-box">
+            <img src="janam1.jpg" alt="Reader">
+            <h3>Jonan Ishimwe</h3>
+            <p>"Their publishing services are exceptional! From editing to marketing, Desha made my book a bestseller. I couldn't be happier!"</p>
+            <div class="review-section-stars">★★★★★</div>
+        </div>
+        <div class="review-section-box">
+            <img src="ham.jpg" alt="Reader">
+            <h3>Jjingo Ham</h3>
+            <p>"I love reading books from Desha Publishing House. They consistently publish high-quality content that keeps me engaged!"</p>
+            <div class="review-section-stars">★★★★★</div>
         </div>
     </div>
 </section>
+
 
 <!-- review section end -->
 
@@ -484,34 +482,24 @@
 <!-- contact section end -->
 
 
-<section id="imprints" style="text-align: center; padding: 40px;">
+<section id="imprints">
     <h2>Our Imprints</h2>
-    <div style="max-width: 800px; margin: 0 auto; font-size: 1.4em;">
+    <div class="content-container">
         <p>
-            Desha Publishing House expands its reach with a family of imprints, each focused on unique voices and genres. Dez Audio brings stories to life through immersive soundscapes. Dez Press showcases African Literature, amplifying the continent's rich cultural heritage.        </p>
+            Desha Publishing House expands its reach with a family of imprints, each focused on unique voices and genres. Dez Audio brings stories to life through immersive soundscapes. Dez Press showcases African Literature, amplifying the continent's rich cultural heritage.
+        </p>
         <p>
-            Dez Publishing offers insightful perspectives and expert knowledge through non-fiction titles. KDE Children's Books House nurtures young minds with enchanting tales and imaginative worlds. Together, these imprints demonstrate Desha Publishing House's commitment to diversity, innovation, and literary excellence.        </p>
+            Dez Publishing offers insightful perspectives and expert knowledge through non-fiction titles. KDE Children's Books House nurtures young minds with enchanting tales and imaginative worlds. Together, these imprints demonstrate Desha Publishing House's commitment to diversity, innovation, and literary excellence.
+        </p>
     </div>
 
-    <div style="display: flex; justify-content: center; gap: 20px; margin-top: 20px;">
-        <img src="./DEZ AUDIO.png" alt="Imprint 1" style="height: 100px;">
-        <img src="./DEZ PRESS.png" alt="Imprint 2" style="height: 100px;">
-        <img src="./DEZ PUBLISHING.png" alt="Imprint 3" style="height: 100px;">
-        <img src="./KDE CHILDREN BOOKS.png" alt="Imprint 1" style="height: 100px;">
+    <div class="imprint-logos">
+        <img class="imprint-logo" src="./DEZ AUDIO.png" alt="Dez Audio">
+        <img class="imprint-logo" src="./DEZ PRESS.png" alt="Dez Press">
+        <img class="imprint-logo" src="./DEZ PUBLISHING.png" alt="Dez Publishing">
+        <img class="imprint-logo" src="./KDE CHILDREN BOOKS.png" alt="KDE Children Books">
     </div>
 </section>
-
-
-
-<!-- Payment Modal -->
-<div id="payment-modal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <iframe id="payment-frame" src="" width="100%" height="300px"></iframe>
-    </div>
-</div>
-
-
 <!-- Footer Section Start -->
 <section class="footer">
     <div class="box-container">
